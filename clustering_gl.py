@@ -90,11 +90,8 @@ if __name__ == "__main__":
 
     # df.shape = (n_samples, n_cols)
 
-    
-    # Uncomment this to see
+    # Uncomment this to see data after filtering and sampling
     # print(f'Data Sample after filtering and sampling:\n{df}')
-
- 
 
     # Initialize glfw
     if not glfw.init():
@@ -130,6 +127,12 @@ if __name__ == "__main__":
     for cluster in clusters:
         cluster.gpuShape = es.toGPUShape(bs.createColorTriangle(*cluster.color))
 
+    import pdb
+    pdb.set_trace()
+
+    for point_index, point in enumerate(df.values):
+        cluster_index, closest_cluster = get_closest_cluster(clusters, point)
+        df['Cluster'].values[point_index] = cluster_index
 
     identity = tr.identity()
     while not glfw.window_should_close(window):

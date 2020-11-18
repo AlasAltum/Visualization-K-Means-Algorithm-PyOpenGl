@@ -12,4 +12,12 @@ class Cluster:
     def distance_to_cluster(self, point):
         return norm(self.pos - point)
     
-    
+
+def get_closest_cluster(clusters, point):
+    closest_cluster = float("inf")
+
+    for index, cluster in enum(clusters):
+        if norm(cluster.pos - point) < closest_cluster:
+            closest_cluster = cluster
+
+    return index, closest_cluster
