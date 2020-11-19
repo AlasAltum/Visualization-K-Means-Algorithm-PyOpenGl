@@ -14,10 +14,17 @@ class Cluster:
     
 
 def get_closest_cluster(clusters, point):
-    closest_cluster = float("inf")
+    closest_cluster_dist = float("inf")
+    closest_cluster = clusters[0]
+    closest_index = 0
 
-    for index, cluster in enum(clusters):
-        if norm(cluster.pos - point) < closest_cluster:
+    for index, cluster in enumerate(clusters):
+        dist = norm(cluster.pos - point)
+
+        if dist < closest_cluster_dist:
+            closest_index = index
             closest_cluster = cluster
+            closest_cluster_dist = dist
 
-    return index, closest_cluster
+
+    return closest_index, closest_cluster

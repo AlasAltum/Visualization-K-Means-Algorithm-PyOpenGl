@@ -287,26 +287,23 @@ class SimpleTransformColorChangeShaderProgram:
             uniform mat4 transform;
 
             in vec3 position;
-            in vec3 color;
-
-            out vec3 newColor;
+            uniform vec3 color;
 
             void main()
             {
                 gl_Position = transform * vec4(position, 1.0f);
-                newColor = color;
             }
             """
 
         fragment_shader = """
             #version 130
-            in vec3 newColor;
 
+            uniform vec3 color;
             out vec4 outColor;
 
             void main()
             {
-                outColor = vec4(newColor, 1.0f);
+                outColor = vec4(color, 1.0f);
             }
             """
 
@@ -330,9 +327,9 @@ class SimpleTransformColorChangeShaderProgram:
         glVertexAttribPointer(position, 3, GL_FLOAT, GL_FALSE, 24, ctypes.c_void_p(0))
         glEnableVertexAttribArray(position)
 
-        color = glGetAttribLocation(self.shaderProgram, "color")
-        glVertexAttribPointer(color, 3, GL_FLOAT, GL_FALSE, 24, ctypes.c_void_p(12))
-        glEnableVertexAttribArray(color)
+        # color = glGetAttribLocation(self.shaderProgram, "color")
+        # glVertexAttribPointer(color, 3, GL_FLOAT, GL_FALSE, 24, ctypes.c_void_p(12))
+        # glEnableVertexAttribArray(color)
 
         # Render the active element buffer with the active shader program
         glDrawElements(mode, shape.size, GL_UNSIGNED_INT, None)

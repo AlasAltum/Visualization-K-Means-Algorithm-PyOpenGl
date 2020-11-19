@@ -107,6 +107,25 @@ def createColorQuad(r, g, b):
 
     return Shape(vertices, indices)
 
+def createSmallColorQuad(r, g, b):
+
+    # Defining locations and colors for each vertex of the shape    
+    vertices = [
+    #   positions        colors
+        -0.01, -0.01, 0.0,  r, g, b,
+         0.01, -0.01, 0.0,  r, g, b,
+         0.01,  0.01, 0.0,  r, g, b,
+        -0.01,  0.01, 0.0,  r, g, b]
+
+    # Defining connections among vertices
+    # We have a triangle every 3 indices specified
+    indices = [
+         0, 1, 2,
+         2, 3, 0]
+
+    return Shape(vertices, indices)
+
+
 
 def createTextureQuad(image_filename, nx=1, ny=1):
 

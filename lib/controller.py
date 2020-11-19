@@ -18,6 +18,7 @@ class Controller:
         self.z_axis = 0
         self.z_name = ""
         self.iterations = 0
+        self.iteration_forward = False
         self.dataframe = 0
 
     def advance_iteration(self):
@@ -36,11 +37,10 @@ def on_key(window, key, scancode, action, mods):
     global _controller
 
     if key == glfw.KEY_RIGHT:
-        _controller.iterations += 1
+        _controller.iteration_forward = True
 
     elif key == glfw.KEY_X:
         _controller.x_axis = (_controller.x_axis + 1) % _controller._data_dimensions
-        _controller.x_name = []
 
     elif key == glfw.KEY_Y:
         _controller.y_axis = (_controller.y_axis + 1) % _controller._data_dimensions
