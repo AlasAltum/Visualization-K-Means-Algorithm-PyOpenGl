@@ -5,7 +5,7 @@ This script was made to show how the K Means Algorithm works.
 
 
 ## Installation
-You need Python 3, OpenGL in your GPU. Besides, you can install the packages by executing the following command in the directory where clustering_gl is located:
+You need Python 3, and OpenGL in your GPU. Besides, you can install the packages by executing the following command in the directory where clustering_gl is located:
 
 ```
 pip install -r requirements.txt
